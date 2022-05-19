@@ -6,10 +6,8 @@
 ##
 
 SRC	=	src/arg_check.c					\
-		src/cesar.c 					\
 		src/write_file.c				\
-		src/open_file.c					\
-		src/neg_cesar.c					\
+		src/open_file.c
 
 MAIN_SRC	=	src/main.c
 
@@ -28,10 +26,11 @@ CPPFLAGS	=	-I ./include/
 all:	$(NAME)
 
 $(NAME):	$(OBJ) $(MAIN_OBJ)
-	gcc -o $(NAME) $(OBJ) $(MAIN_OBJ) $(LIB) $(CPPFLAGS)
+	gcc -o $(NAME) $(OBJ) $(MAIN_OBJ) $(CPPFLAGS)
 
 tests_run:	$(TEST_OBJ)
-	gcc -o unit_tests $(TEST_OBJ) $(SRC) $(LIB) $(CPPFLAGS) --coverage -lcriterion
+	gcc -o unit_tests $(TEST_OBJ) $(SRC) $(CPPFLAGS)\
+--coverage -lcriterion
 	./unit_tests
 
 clean:
